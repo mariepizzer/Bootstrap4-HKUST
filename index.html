@@ -31,7 +31,7 @@
                     <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <a id="loginbutton">
                     <span class="fa fa-sign-in"></span> Login</a>
                 </span>
             </div>
@@ -169,9 +169,7 @@
                     <img src="img/logo.png" class="img-fluid" alt="">
                 </div>
                 <div  class="col-12 col-sm-3 ">
-                    <a role="button" class="btn btn-block nav-link btn-warning" 
-                    data-toggle="modal" data-target="#reservationModal"
-                    href="#reservation">Reserve Table</a>
+                    <a id="reservationbutton" role="button" class="btn btn-block nav-link btn-warning ">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -340,17 +338,26 @@
         
         $("#mycarousel").carousel( { interval: 2000 } );
         $("#carouselButton").click(function(){
-                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
-                    $("#mycarousel").carousel('pause');
-                    $("#carouselButton").children("span").removeClass('fa-pause');
-                    $("#carouselButton").children("span").addClass('fa-play');
-                }
-                else if ($("#carouselButton").children("span").hasClass('fa-play')){
-                    $("#mycarousel").carousel('cycle');
-                    $("#carouselButton").children("span").removeClass('fa-play');
-                    $("#carouselButton").children("span").addClass('fa-pause');                    
-                }
-            });
+            if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                $("#mycarousel").carousel('pause');
+                $("#carouselButton").children("span").removeClass('fa-pause');
+                $("#carouselButton").children("span").addClass('fa-play');
+            }
+            else if ($("#carouselButton").children("span").hasClass('fa-play')){
+                $("#mycarousel").carousel('cycle');
+                $("#carouselButton").children("span").removeClass('fa-play');
+                $("#carouselButton").children("span").addClass('fa-pause');                    
+            }
+        });
+
+        
+        $("#loginbutton").on('click', function(){
+            $('#loginModal').modal();
+        });
+        $("#reservationbutton").on('click', function(){
+            $('#reservationModal').modal();
+        });
+
     </script>
 </body>
 
